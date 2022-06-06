@@ -1,0 +1,17 @@
+name: Close stale issues and pull requests
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 1 * * *'
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v4
+        with:
+          days-before-stale: 7
+          stale-pr-message: Ничего не делается. Если за 7 дней тут не будет новостей, то пулл-реквест пойдёт домой.
+          stale-issue-message: Ничего не делается. Если за 7 дней тут не будет новостей, то задача пойдёт домой.
+          close-pr-message: Всё, плохо.
+          close-issue-message: Всё, плохо.
